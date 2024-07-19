@@ -11,6 +11,8 @@ const __dirname = path.resolve();
 // serving static file from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(express.urlencoded({ extended: true }));
+
 // app.get('/', (req, res) => {
 //   //   console.log(req, res, next);
 
@@ -30,7 +32,15 @@ app.get('/', (req, res) => {
 
 // user registration controller
 app.get('/register', (req, res) => {
+  console.log(req.query);
+
   console.log('registering in');
+  res.sendFile(__dirname + '/src/html/register.html');
+});
+app.post('/register', (req, res) => {
+  console.log(req.body);
+
+  console.log('registering received');
   res.sendFile(__dirname + '/src/html/register.html');
 });
 
