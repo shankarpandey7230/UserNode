@@ -39,29 +39,35 @@
         </div>
       </nav>
       <hr />
-      <h1>Welcome to the User System</h1>
+      <h1 class="text-center">Welcome , Register to our community</h1>
       <hr />
-      <div class="container">
-        <!-- <div class="alert alert-primary">Create a account to be connected!</div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur sed
-        consequatur impedit eaque saepe doloremque sapiente voluptatibus odio
-        fugiat sequi. -->
-      </div>
-      <!-- <div class="container mt-5">
-        <form class="shadow-lg p-3">
+      <div class="container mt-5">
+        <form class="shadow-lg p-4 rounded">
+          <h3>Register Now!</h3>
+          <hr />
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Email address</label
+            >
+            <input
+              type="text"
+              name="'name"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+          </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label"
               >Email address</label
             >
             <input
               type="email"
+              name="email"
               class="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
             />
-            <div id="emailHelp" class="form-text">
-              We'll never share your email with anyone else.
-            </div>
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label"
@@ -69,11 +75,12 @@
             >
             <input
               type="password"
+              name="password"
               class="form-control"
               id="exampleInputPassword1"
             />
           </div>
-          <div class="mb-3 form-check">
+          <!-- <div class="mb-3 form-check">
             <input
               type="checkbox"
               class="form-check-input"
@@ -82,10 +89,12 @@
             <label class="form-check-label" for="exampleCheck1"
               >Check me out</label
             >
+          </div> -->
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-      </div> -->
+      </div>
     </div>
   </body>
 </html>

@@ -19,19 +19,33 @@ app.use(express.static(path.join(__dirname, 'public')));
 //   res.send('<h1>Hello server</h1><hr><p>lorem ipsum lorem ipsum</p>');
 // });
 
+// home page controllers
 app.get('/', (req, res) => {
+  console.log('req received');
   res.sendFile(
     __dirname + '/src/html/index.html'
     // '/Users/shankarpandey/Desktop/DEVELOPER/SHANKAR/Code/BACKEND/User/src/html/index.html'
   );
 });
 
-app.get('/get-user', (req, res) => {
-  res.json({
-    firstName: 'Shankar',
-    lastName: 'Pandey',
-  });
+// user registration controller
+app.get('/register', (req, res) => {
+  console.log('registering in');
+  res.sendFile(__dirname + '/src/html/register.html');
 });
+
+// user login Controller
+app.get('/login', (req, res) => {
+  console.log('logging in ');
+  res.sendFile(__dirname + '/src/html/login.html');
+});
+
+// app.get('/get-user', (req, res) => {
+//   res.json({
+//     firstName: 'Shankar',
+//     lastName: 'Pandey',
+//   });
+// });
 
 app.listen(PORT, (error) => {
   error
