@@ -1,6 +1,8 @@
 import express from 'express';
 import fs from 'node:fs';
 import path from 'path';
+import { makeHtmlString } from './src/html/fileMerger.js';
+
 const app = express();
 
 const PORT = 8000;
@@ -23,11 +25,21 @@ app.use(express.urlencoded({ extended: true }));
 
 // home page controllers
 app.get('/', (req, res) => {
-  console.log('req received');
-  res.sendFile(
-    __dirname + '/src/html/index.html'
-    // '/Users/shankarpandey/Desktop/DEVELOPER/SHANKAR/Code/BACKEND/User/src/html/index.html'
-  );
+  // read the text file
+  fs.readFile(fileName, 'utf8', (error, data) => {
+    if (error) {
+      console.log(error);
+      res.sendFile(
+        __dirname + '/src/html/index.html'
+        // '/Users/shankarpandey/Desktop/DEVELOPER/SHANKAR/Code/BACKEND/User/src/html/index.html'
+      );
+    } else {
+      console.log(data.split('\n'));
+      res.send(makeHtmlString(data.split('\n')));
+    }
+    // error ?  : console.log(data);
+  });
+  //   console.log('req received');
 });
 
 // user registration controller
