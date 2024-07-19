@@ -6,7 +6,10 @@ const app = express();
 const PORT = 8000;
 
 const __dirname = path.resolve();
-console.log(__dirname, '===');
+// console.log(__dirname, '===');
+
+// serving static file from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 // app.get('/', (req, res) => {
 //   //   console.log(req, res, next);
@@ -21,6 +24,13 @@ app.get('/', (req, res) => {
     __dirname + '/src/html/index.html'
     // '/Users/shankarpandey/Desktop/DEVELOPER/SHANKAR/Code/BACKEND/User/src/html/index.html'
   );
+});
+
+app.get('/get-user', (req, res) => {
+  res.json({
+    firstName: 'Shankar',
+    lastName: 'Pandey',
+  });
 });
 
 app.listen(PORT, (error) => {
