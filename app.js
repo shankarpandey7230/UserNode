@@ -1,5 +1,5 @@
 import express from 'express';
-
+import fs from 'node:fs';
 import path from 'path';
 const app = express();
 
@@ -37,11 +37,26 @@ app.get('/register', (req, res) => {
   console.log('registering in');
   res.sendFile(__dirname + '/src/html/register.html');
 });
+
+const fileName = 'userList.csv';
 app.post('/register', (req, res) => {
-  console.log(req.body);
+  //   console.log(req.body);
+  const { name, email, password } = req.body;
+
+  const str = `${name},${email},${password}\n`;
+  console.log(str);
+  //   create file and write data in file
+
+  fs.appendFile(fileName, str, (error) => {
+    // error ? console.log(error) : console.log('data has been written to file');
+    error ? res.send(error.message) : res.redirect('/');
+    //    res.send(
+    //       `<h1 class='alert alert-success'>User created, login with credentials</h1>`
+    //     );
+  });
 
   console.log('registering received');
-  res.sendFile(__dirname + '/src/html/register.html');
+  //   res.sendFile(__dirname + '/src/html/register.html');
 });
 
 // user login Controller
